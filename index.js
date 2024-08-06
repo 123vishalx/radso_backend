@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors()); // Use CORS middleware
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/RADSO', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -26,15 +26,12 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/RADSO', {
     process.exit(1);
   });
 
-
-
 // Ensure these routes exist and are correctly implemented
 app.use('/api/blogs', require('./routes/blogs')); 
 app.use('/api/categories', require('./routes/Category')); 
 app.use('/api/admin', require('./routes/admin')); 
 app.use('/api/career', require('./routes/career')); 
 app.use('/api/form', require('./routes/form')); 
-
 
 // Start server
 const PORT = process.env.PORT || 5000;
